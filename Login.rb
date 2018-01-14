@@ -1,37 +1,46 @@
 require 'yaml'
-Shoes.app :title => "Dorothy", :width => 550, :height => 560, :resizable => false do
-background lightslategray
+Shoes.app :title => "Dorothy" do 
 
- background tan, :height => 40
- caption "Dorothy - Sistema de Transferência de Notas - IFRN - EaD", :margin_left => 30, :margin => 8, :stroke => white
+background "#4F4F4F"
  
- @text = para "Área de Acesso", :size => 15
- @text.style(:align => "center", :margin_top => 100, :stroke => white, :font => "bold")
-   stack :width => 250, :height => 370, :margin_top => 140, :align => "center" do
-    background silver, :curve => 15
-	
-    border silver, :strokewidth => 3,:curve => 15   
-    stack :margin => 20 do
-    @text = para "Usuário:", :font => "bold" 
-	
-    username = edit_line
-	
-	@text2 = para "Senha:", :font => "bold", margin_top: 15
+ @text = para "Sistema de Transferência de Notas \n", :size => 20, :align => "center"
+ @text1 = para "IFRN Campus EaD", :size => 15, :align => "center"
+ @text.style(:margin_top => 100, :margin_left => 100, :stroke => "#32CD32", :font => "bold")
+ @text1.style(:margin_top => 105, :margin_left => 100, :stroke => white, :font => "bold")
 
-    password = edit_line
+ flow do
+ style(:margin_left => '50%', :left => '-9%', :margin_top => '20%')
+ 
+   stack :width => 350, :height => 360 do
+   background "#FFFAFA"
+   border "#006400", :strokewidth => 3
 	
-	stack :margin => 20, :margin_left => 60 do
-	
-
-	@b = button "ACESSAR"
-		@b.click do
-	
+	stack  do
+	  background "#006400", :height => 40, :width => 600
+	  caption "Área de Login", :align => "center", :margin => 8, :stroke => white, :font => "bold"
+     end 
+	  stack :margin_left => 20, :margin_top => 20 do
+	  para "Matrícula", :stroke => "#006400", :font => "bold"
+      @user = edit_line
+	  @user.style width: 300, height: 40
+    end
+    stack :margin_left => 20, :margin_top => 20 do
+     para "Senha", :stroke => "#006400", :font => "bold"
+     @password = edit_line
+	 @password.style width: 300, height: 40
+    end
+	stack :margin_left => 20, :margin_top => 30 do
+     @b = button "Entrar"
+	 @b.style width: 300, height: 40
+	 @b.click do
     #Realiza Determinada Ação
+	end
+    end
 	
+
+	end	
  
-    
- end
- end
+    end
 end
-  end
-end
+
+
